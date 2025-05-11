@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ProductHouse – Кабінет користувача</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Marck+Script&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #f3faf3;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: linear-gradient(135deg, #7fbf7f, #539e53);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    header h1 {
+      font-family: 'Marck Script', cursive;
+      font-size: 2.5em;
+      margin: 0;
+    }
+    .cta-btn {
+      display: inline-block;
+      padding: 15px 30px;
+      background-color: #539e53;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 1.2em;
+      margin-top: 20px;
+    }
+    .cta-btn:hover {
+      background-color: #7fbf7f;
+    }
+    .form-container {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .form-container h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .form-container input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+    .form-container button {
+      width: 100%;
+      padding: 15px;
+      background-color: #539e53;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.2em;
+      cursor: pointer;
+    }
+    .form-container button:hover {
+      background-color: #7fbf7f;
+    }
+    .form-footer {
+      text-align: center;
+    }
+    .form-footer a {
+      color: #539e53;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>ProductHouse</h1>
+  <p>Кабінет користувача</p>
+</header>
+
+<!-- Кабінет -->
+<div class="form-container">
+  <h2>Вхід у кабінет</h2>
+  <form id="login-form">
+    <input type="email" id="email" placeholder="Email" required/>
+    <input type="password" id="password" placeholder="Пароль" required/>
+    <button type="submit">Увійти</button>
+  </form>
+
+  <div class="form-footer">
+    <p>Немає акаунту? <a href="#" id="register-link">Зареєструйтесь</a></p>
+  </div>
+</div>
+
+<!-- Реєстрація -->
+<div class="form-container" id="register-container" style="display: none;">
+  <h2>Реєстрація</h2>
+  <form id="register-form">
+    <input type="email" id="reg-email" placeholder="Email" required/>
+    <input type="password" id="reg-password" placeholder="Пароль" required/>
+    <button type="submit">Зареєструватись</button>
+  </form>
+
+  <div class="form-footer">
+    <p>Маєте акаунт? <a href="#" id="login-link">Увійти</a></p>
+  </div>
+</div>
+
+<script>
+  // Обробник для форми входу
+  const loginForm = document.getElementById('login-form');
+  const emailInput = document.getElementById('email');
+  const passwordInput = document.getElementById('password');
+
+  loginForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const email = emailInput.value;
+    const password = passwordInput.value;
+    
+    const storedEmail = localStorage.getItem('email');
+    const storedPassword = localStorage.getItem('password');
+    
+    if (email === storedEmail && password === storedPassword) {
+      alert('Вхід успішний!');
+      window.location.href = '/dashboard'; // Перехід до кабінету
+    } else {
+      alert('Невірний логін або пароль');
+    }
+  });
+
+  // Обробник для реєстрації
+  const registerForm = document.getElementById('register-form');
+  const regEmailInput = document.getElementById('reg-email');
+  const regPasswordInput = document.getElementById('reg-password');
+
+  registerForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const email = regEmailInput.value;
+    const password = regPasswordInput.value;
+    
+    // Зберігаємо дані в localStorage
+    localStorage.setItem('email', email);
+    localStorage.setItem('password', password);
+    
+    alert('Реєстрація успішна! Тепер можете увійти.');
+    document.getElementById('register-container').style.display = 'none';
+    document.getElementById('login-form').reset();
+    document.getElementById('login-link').click();
+  });
+
+  // Перемикання між формами
+  document.getElementById('register-link').addEventListener('click', function() {
+    document.getElementById('register-container').style.display = 'block';
+    document.getElementById('form-container').style.display = 'none';
+  });
+  
+  document.getElementById('login-link').addEventListener('click', function() {
+    document.getElementById('register-container').style.display = 'none';
+    document.getElementById('login-form').style.display = 'block';
+  });
+</script>
+
+</body>
+</html>

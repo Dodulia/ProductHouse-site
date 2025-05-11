@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ProductHouse – Головна</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Marck+Script&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      background-color: #f3faf3;
+      color: #333;
+    }
+
+    .top-banner {
+      background-color: #d9534f;
+      color: white;
+      text-align: center;
+      padding: 8px;
+      font-size: 0.95em;
+    }
+    .header {
+      background-color: #539e53;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-family: 'Marck Script', cursive;
+      font-size: 2em;
+    }
+    .nav {
+      display: flex;
+      gap: 20px;
+    }
+    .nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .nav a:hover {
+      text-decoration: underline;
+    }
+    .icons a {
+      color: white;
+      margin-left: 15px;
+      font-size: 1.2em;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #7fbf7f, #539e53);
+      padding: 60px 20px;
+      text-align: center;
+      color: white;
+    }
+    .hero h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      font-size: 1.2em;
+    }
+    .hero .cta {
+      margin-top: 20px;
+      background: white;
+      color: #539e53;
+      padding: 12px 25px;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .hero .cta:hover {
+      background: #eeeeee;
+    }
+
+    .section-title {
+      text-align: center;
+      margin: 40px 0 20px;
+      font-size: 1.8em;
+      color: #539e53;
+    }
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 0 20px 40px;
+    }
+    .category-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      padding: 15px;
+      transition: transform 0.3s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .category-card:hover {
+      transform: translateY(-5px);
+    }
+    .category-card img {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+    .category-card h3 {
+      margin-top: 10px;
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Хедер -->
+<header class="header">
+  <div class="logo">ProductHouse</div>
+  <nav class="nav">
+    <a href="#categories">Категорії</a>
+    <a href="#sale">Акції</a>
+    <a href="#contacts">Контакти</a>
+  </nav>
+  <div class="icons">
+    <a href="pages/user_cabinet.html"><i class="fas fa-user"></i>
+      <i class="fas fa-shopping-cart"></i><span id="cart-count">0</span>
+    </a>
+    <a href="../магазин продуктив/pages/cart.html"><i class="fas fa-shopping-cart"></i>
+      <span id="cart-count">0</span>
+    </a>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <h1>Натуральні продукти на вашому столі</h1>
+  <p>Свіжість, якість та зручність — просто замовляй онлайн</p>
+
+  <!-- ПОШУК + ФІЛЬТР просто всередині hero -->
+  <div class="search-panel" style="margin-top:35px;">
+    <input id="search-box"
+           type="text"
+           placeholder="Пошук товарів…"
+           style="padding:10px 14px; width:250px; max-width:90%; border-radius:6px; border:none;">
+    
+    <select id="category-filter"
+            style="padding:10px 12px; margin-left:10px; border:none; border-radius:6px;">
+      <option value="">Усі категорії</option>
+      <option value="Овочі та фрукти">Овочі та фрукти</option>
+      <option value="Молочна">Молочна продукція</option>
+      <option value="М’ясо">М’ясо</option>
+      <option value="Бакалія">Бакалія</option>
+    </select>
+  </div>
+</section>
+
+
+<!-- Категорії -->
+<h2 class="section-title" id="categories">Категорії товарів</h2>
+<section class="categories">
+  <a href="pages/cat_vegetables.html" class="category-card"
+  data-cat="Овочі та фрукти">
+    <img src="image/categories/овочі і фрукти.png" alt="Овочі та фрукти"/>
+    <h3>Овочі та фрукти</h3>
+  </a>
+  <a href="pages/cat_meat.html" class="category-card"
+  data-cat="М’ясо">
+    <img src="image/categories/м'ясо.png" alt="М’ясо"/>
+    <h3>М’ясо</h3>
+  </a>
+  <a href="pages/cat_dairy.html" class="category-card"
+  data-cat="Молочна продукція">
+    <img src="image/categories/молочка.png" alt="Молочна продукція"/>
+    <h3>Молочна продукція</h3>
+  </a>
+  <a href="pages/cat_bacaliya.html" class="category-card"
+  data-cat="Бакалія">
+    <img src="image/categories/бакалія.png" alt="Олія та крупи"/>
+    <h3>Олія та крупи</h3>
+  </a>
+</section>
+
+<!-- Акції -->
+<h2 class="section-title" id="sale">Акційні пропозиції</h2>
+<section class="categories">
+  <a href="perelik.html/cheese.html" class="category-card"
+  data-name="Сир Чеддер 200 г"
+   data-cat="Молочна">
+    <img src="https://nssz.com.ua/image/cache/catalog/other_cheeses/slider_images/Emmental/4-750x450.jpg" alt="Сир"/>
+    <h3>Сир —20%</h3>
+  </a>
+  <a href="perelik.html/sausage.html" class="category-card"
+  data-name="Ковбаса 300 г"
+   data-cat="М'ясо">>
+    <img src="image/ковбаса.jpg" alt="Ковбаса"/>
+    <h3>Ковбаса —15%</h3>
+  </a>
+  <a href="perelik.html/yogurt.html" class="category-card"
+  data-name="Йогурт 250 г"
+   data-cat="Молочна">>
+    <img src="https://shuba.life/static/content/thumbs/660x440/3/b6/7sybih---c3x2x50px50p-up--198ac80444e79fc286026812c81b7b63.jpg" alt="Йогурт"/>
+    <h3>Йогурти 3=2</h3>
+  </a>
+</section>
+
+<!-- Переваги -->
+<h2 class="section-title">Чому обирають нас?</h2>
+<section class="categories">
+  <div class="category-card">
+    <img src="https://cdn-icons-png.flaticon.com/512/4305/4305620.png" alt="Швидка доставка" style="height: 100px; width: auto; margin: 0 auto;"/>
+    <h3>Доставка до дверей</h3>
+  </div>
+  <div class="category-card">
+    <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="Свіжість" style="height: 100px; width: auto; margin: 0 auto;"/>
+    <h3>100% свіжі продукти</h3>
+  </div>
+  <div class="category-card">
+    <img src="https://cdn-icons-png.flaticon.com/512/2991/2991109.png" alt="Оплата" style="height: 100px; width: auto; margin: 0 auto;"/>
+    <h3>Зручна оплата</h3>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<h2 class="section-title" id="faq">Питання та відповіді</h2>
+<section class="faq" style="padding: 0 20px 60px; max-width: 900px; margin: 0 auto;">
+  <details style="background: white; border-radius: 10px; padding: 15px; margin-bottom: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+    <summary style="font-weight: bold; font-size: 1.1em; cursor: pointer;">Які види продукції ви пропонуєте?</summary>
+    <p style="margin-top: 10px;">У нашому магазині ви знайдете широкий асортимент овочів, м'яса, молочних продуктів, бакалії, олії, круп та натуральних солодощів.</p>
+  </details>
+  <details style="background: white; border-radius: 10px; padding: 15px; margin-bottom: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+    <summary style="font-weight: bold; font-size: 1.1em; cursor: pointer;">Чи є у вас сертифікати якості?</summary>
+    <p style="margin-top: 10px;">Так, усі товари мають відповідні сертифікати якості та проходять регулярну перевірку.</p>
+  </details>
+  <details style="background: white; border-radius: 10px; padding: 15px; margin-bottom: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+    <summary style="font-weight: bold; font-size: 1.1em; cursor: pointer;">Чи є у вас доставка?</summary>
+    <p style="margin-top: 10px;">Так, ми доставляємо по місту та передмістю протягом 24 годин після замовлення.</p>
+  </details>
+  <details style="background: white; border-radius: 10px; padding: 15px; margin-bottom: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+    <summary style="font-weight: bold; font-size: 1.1em; cursor: pointer;">Який мінімальний обсяг замовлення?</summary>
+    <p style="margin-top: 10px;">Мінімальне замовлення — 300 грн. Для гуртових клієнтів — від 1500 грн.</p>
+  </details>
+  <details style="background: white; border-radius: 10px; padding: 15px; margin-bottom: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+    <summary style="font-weight: bold; font-size: 1.1em; cursor: pointer;">Чи можна повернути товар?</summary>
+    <p style="margin-top: 10px;">Так, у разі виявлення дефекту або неякісного товару — протягом 24 годин після отримання.</p>
+  </details>
+</section>
+
+<!-- Розсилка -->
+<h2 class="section-title">Підпишіться на нашу розсилку</h2>
+<section class="newsletter" style="text-align:center; padding: 40px 20px;">
+  <p style="font-size: 1.1em;">Отримуйте знижки, акції та новини першими</p>
+  <input type="email" placeholder="Ваш email" style="padding:10px; border-radius:5px; border:1px solid #ccc; width:300px; max-width:90%; margin-top:10px;">
+  <br><br>
+  <button style="padding:10px 20px; background:#539e53; color:white; border:none; border-radius:5px; font-weight:bold; cursor:pointer;">
+    Підписатись
+  </button>
+</section>
+
+<!-- New Footer -->
+<footer style="background: #539e53; color: white; padding: 60px 20px 40px;">
+  <div style="max-width: 1100px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between;">
+    <div style="flex: 1 1 200px; margin-bottom: 20px;">
+      <h3>Контакти</h3>
+      <p>+38 (067) 123-45-67</p>
+      <p>producthouse@gmail.com</p>
+      <p>м. Львів, вул. Коперника,3</p>
+    </div>
+    <div style="flex: 1 1 200px; margin-bottom: 20px;">
+      <h3>Про магазин</h3>
+      <p><a href="#" style="color:white; text-decoration:none;">Доставка</a></p>
+      <p><a href="#" style="color:white; text-decoration:none;">Оплата</a></p>
+    </div>
+    <div style="flex: 1 1 200px; margin-bottom: 20px;">
+      <h3>Каталог товарів</h3>
+      <p><a href="pages/cat_vegetables.html" style="color:white; text-decoration:none;">Овочі та фрукти</a></p>
+      <p><a href="#" style="color:white; text-decoration:none;">М’ясо</a></p>
+      <p><a href="#" style="color:white; text-decoration:none;">Молочна продукція</a></p>
+      <p><a href="#" style="color:white; text-decoration:none;">Бакалія</a></p>
+    </div>
+  </div>
+  <p style="text-align: center; margin-top: 30px; font-size: 0.9em;">&copy; 2025 ProductHouse. Всі права захищені.</p>
+</footer>
+
+<script defer src="../магазин продуктив/js/main.js"></script>
+
+<script defer src="../магазин продуктив/js/search.js"></script>
+</body>
+</html>

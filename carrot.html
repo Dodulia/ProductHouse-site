@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Морква – ProductHouse</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Marck+Script&display=swap" rel="stylesheet"/>
+  <style>
+    /* ========== БАЗОВІ СТИЛІ ========== */
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      background-color: #f3faf3;
+      color: #333;
+    }
+    /* ========== ТОП-БАНЕР ========== */
+    .top-banner {
+      background-color: #d9534f;
+      color: white;
+      text-align: center;
+      padding: 8px;
+      font-size: 0.95em;
+    }
+    /* ========== ХЕДЕР ========== */
+    .header {
+      background-color: #539e53;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo a {
+      font-family: 'Marck Script', cursive;
+      font-size: 2em;
+      color: white;
+      text-decoration: none;
+    }
+    .nav {
+      display: flex;
+      gap: 20px;
+    }
+    .nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .nav a:hover {
+      text-decoration: underline;
+    }
+    .icons a {
+      color: white;
+      margin-left: 15px;
+      font-size: 1.2em;
+    }
+    /* ========== ХЛІБНІ КРИХТИ ========== */
+    .breadcrumbs {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 0 20px;
+      font-size: 0.9em;
+    }
+    .breadcrumbs a {
+      color: #539e53;
+      text-decoration: none;
+    }
+    .breadcrumbs a:hover {
+      text-decoration: underline;
+    }
+    .breadcrumbs span {
+      margin: 0 5px;
+      color: #666;
+    }
+    /* ========== КАРТКА ТОВАРУ ========== */
+    .product-card {
+      max-width: 900px;
+      margin: 30px auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      animation: fadeIn 1s ease-in-out;
+    }
+    .product-img {
+      flex: 1 1 40%;
+      overflow: hidden;
+    }
+    .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .product-img:hover img {
+      transform: scale(1.1);
+    }
+    .product-info {
+      flex: 1 1 60%;
+      padding: 20px;
+    }
+    .product-info h2 {
+      margin: 0 0 10px;
+      font-size: 1.8em;
+      color: #333;
+    }
+    .price {
+      color: #539e53;
+      font-size: 1.5em;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    .description p {
+      color: #666;
+      line-height: 1.6;
+      margin: 8px 0;
+    }
+    .button {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      color: #fff;
+      background: linear-gradient(135deg, #7fbf7f, #539e53);
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.3s;
+      cursor: pointer;
+    }
+    .button:hover {
+      background: linear-gradient(135deg, #539e53, #7fbf7f);
+    }
+    .rating {
+      color: #f3a847;
+      margin-top: 10px;
+      font-size: 1.2em;
+    }
+    .reviews {
+      background: #f8f8f8;
+      padding: 10px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    /* ========== ФУТЕР ========== */
+    footer {
+      background: #539e53;
+      color: white;
+      padding: 60px 20px 40px;
+      font-size: 0.9em;
+    }
+    footer a {
+      color: white;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    .footer-container {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .footer-col {
+      flex: 1 1 200px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+
+
+  <!-- Хедер -->
+  <header class="header">
+    <div class="logo"><a href="../index.html">ProductHouse</a></div>
+    <nav class="nav">
+      <a href="../pages/cat_vegetables.html">Категорії</a>
+      <a href="../index.html">Акції</a>
+      <a href="index.html#contacts">Контакти</a>
+    </nav>
+    <div class="icons">
+      <a href="../pages/user_cabinet.html"><i class="fas fa-user"></i></a>
+      <a href="../pages/cart.html">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="cart-count">0</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Хлібні крихти -->
+  <div class="breadcrumbs">
+    <a href="../index.html">Головна</a>
+    <span>›</span>
+    <a href="../pages/cat_vegetables.html">Овочі та фрукти</a>
+  </div>
+
+  <!-- Картка товару -->
+  <div class="product-card">
+    <div class="product-img">
+      <img src="https://fitbeauty.com.ua/wp-content/uploads/2025/03/svizha-myta-morkva-696x464.jpg" alt="Морква">
+    </div>
+    <div class="product-info">
+      <h2>Морква свіжа, 1 кг</h2>
+      <p class="price">24.00 грн</p>
+      <div class="description">
+        <p><strong>Опис:</strong> Свіжа морква, багата на бета-каротин, ідеальна для салатів та супів.</p>
+        <p><strong>Код товару:</strong> 300202</p>
+        <p><strong>Сорт:</strong> Грибовичі</p>
+        <p><strong>Наявність:</strong> ✅ В наявності</p>
+      </div>
+      <p class="rating">⭐⭐⭐⭐☆ (4.5)</p>
+      <button class="buy-btn"
+        data-id="carrot"
+        data-name="Морква свіжа, 1 кг"
+        data-price="24">
+  Купити
+</button>
+
+      <div class="reviews">
+        <h4>Відгуки клієнтів:</h4>
+        <p>«Смачна та солодка морква!» – Ірина С.</p>
+        <p>«Ідеально хрустка, свіжа.» – Павло Т.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Футер -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h3>Контакти</h3>
+        <p>+38 (067) 123-45-67</p>
+        <p>producthouse@gmail.com</p>
+        <p>м. Львів, вул. Коперника, 3</p>
+      </div>
+      <div class="footer-col">
+        <h3>Про магазин</h3>
+        <p><a href="#">Доставка</a></p>
+        <p><a href="#">Оплата</a></p>
+      </div>
+      <div class="footer-col">
+        <h3>Каталог товарів</h3>
+        <p><a href="../pages/cat_vegetables.html">Овочі та фрукти</a></p>
+        <p><a href="../pages/cat_meat.html">М’ясо</a></p>
+        <p><a href="../pages/cat_dairy.html">Молочна продукція</a></p>
+        <p><a href="../pages/cat_bacaliya.html">Бакалія</a></p>
+      </div>
+    </div>
+    <p style="text-align:center; margin-top:30px;">
+      &copy; 2025 ProductHouse. Всі права захищені.
+    </p>
+  </footer>
+</body>
+<script defer src="../js/main.js"></script>
+<script defer src="../js/cart.js"></script>
+</body>
+</html>

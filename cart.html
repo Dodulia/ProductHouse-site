@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Кошик – ProductHouse</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Marck+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *{box-sizing:border-box}body{margin:0;font-family:Montserrat,sans-serif;background:#f3faf3}
+    header{background:#539e53;color:#fff;padding:15px 30px;display:flex;justify-content:space-between;align-items:center}
+    header .logo{font-family:'Marck Script',cursive;font-size:2em}
+    header a{color:#fff;text-decoration:none}
+    main{max-width:900px;margin:40px auto;padding:0 20px}
+    h1{color:#539e53;text-align:center}
+    table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,.08)}
+    thead{background:#eaf5ea}thead th{padding:12px}
+    tbody td{padding:10px;text-align:center;border-bottom:1px solid #eee}
+    tbody tr:last-child td{border-bottom:none}
+    img.thumb{width:60px;height:60px;object-fit:cover;border-radius:6px}
+    input.qty{width:60px;padding:6px;text-align:center}
+    .remove-btn{background:transparent;border:none;font-size:1.1em;color:#d9534f;cursor:pointer}
+    tfoot td{padding:10px;font-weight:600}
+    .total-row td{font-size:1.2em;color:#539e53}
+    .btn{display:inline-block;background:#539e53;color:#fff;padding:12px 22px;border-radius:6px;text-decoration:none;margin-top:20px;text-align:center}
+    .btn:hover{background:#477b47}
+    @media(max-width:640px){thead{display:none}tbody td{display:block;text-align:right;padding:8px 5px}
+      tbody td[data-label]:before{content:attr(data-label)': ';float:left;font-weight:600}
+      tbody tr{display:block;margin-bottom:15px;border:1px solid #eee;border-radius:8px}}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo"><a href="../index.html">ProductHouse</a></div>
+  <a href="../index.html"><i class="fas fa-chevron-left"></i> На головну</a>
+</header>
+
+<main>
+  <h1>Ваш кошик</h1>
+
+  <table id="cart-table">
+    <thead>
+      <tr>
+        <th></th><th>Товар</th><th>К-сть</th><th>Ціна</th><th></th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+
+    <tfoot>
+      <tr><td colspan="3">Підсумок</td><td id="subtotal"></td></tr>
+      <tr><td colspan="3">ПДВ 10 %</td><td id="tax"></td></tr>
+      <tr><td colspan="3">Доставка</td><td id="shipping"></td></tr>
+      <tr class="total-row"><td colspan="3">До сплати</td><td id="grand-total"></td></tr>
+    </tfoot>
+  </table>
+
+  <div style="text-align:center">
+    <button id="clear-cart" class="btn" style="background:#d9534f">Очистити кошик</button>
+    <button id="checkout"   class="btn">Оформити замовлення</button>
+  </div>
+</main>
+
+<script defer src="../js/main.js"></script>
+<script defer src="../js/cart.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', ()=>{
+
+  /* ----- рендерінг таблиці ----- */
+  function renderCart(){
+    const tbody = document.querySelector('#cart-table tbody');
+    tbody.innerHTML='';
+    if(cart.items.length===0){
+      tbody.innerHTML='<tr><td colspan="5" style="padding:25px;text-align:center">Кошик порожній</td></tr>';
+    }
+    cart.items.forEach(item=>{
+      const tr=document.createElement('tr');
+      tr.innerHTML=`
+        <td data-label=""><img class="thumb" src="${item.img||'https://via.placeholder.com/60'}"></td>
+        <td data-label="Товар">${item.name}</td>
+        <td data-label="К-сть"><input type="number" min="1" value="${item.quantity}" data-id="${item.id}" class="qty"></td>
+        <td data-label="Сума">${(item.price*item.quantity).toFixed(2)} грн</td>
+        <td data-label=""><button class="remove-btn" data-id="${item.id}">&times;</button></td>`;
+      tbody.append(tr);
+    });
+
+    document.getElementById('subtotal').textContent   = cart.getSubtotal().toFixed(2)+' грн';
+    document.getElementById('tax').textContent        = cart.getTax().toFixed(2)+' грн';
+    document.getElementById('shipping').textContent   = cart.getShipping().toFixed(2)+' грн';
+    document.getElementById('grand-total').textContent= cart.getGrandTotal().toFixed(2)+' грн';
+
+    /* обробники */
+    tbody.querySelectorAll('.qty').forEach(inp=>{
+      inp.onchange = ()=>{ cart.updateQuantity(inp.dataset.id, +inp.value); renderCart(); };
+    });
+    tbody.querySelectorAll('.remove-btn').forEach(btn=>{
+      btn.onclick = ()=>{ cart.remove(btn.dataset.id); renderCart(); };
+    });
+  }
+
+  renderCart();             // первинний показ
+  cart.updateIcon();        // оновимо бейдж у хедері інших сторінок
+
+  /* кнопки під таблицею */
+  document.getElementById('clear-cart').onclick = ()=>{
+    if(confirm('Очистити кошик?')){ cart.clear(); renderCart(); }
+  };
+  document.getElementById('checkout').onclick = ()=>{
+    alert('Демо-режим: дані можна надсилати на сервер, коли буде бекенд.');
+  };
+});
+</script>
+
+<script defer src="../js/main.js"></script>
+<script defer src="../js/cart.js"></script>
+</body>
+</html>
+
+</body>
+</html>
+
